@@ -3,6 +3,11 @@ div {
     height: 100px;
     border: 1px red solid;
 }
+#banner {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 10px;
+}
 #idioma {
     position: relative;
     left: 90%;
@@ -27,13 +32,15 @@ div {
 }
 #buscador {
     width: 50%;
-    height: 200px;
+    height: 30px;
+    background-color: rgb(218, 218, 218);
 }
 #inputBuscador {
     background-color: rgb(218, 218, 218);
-    border-radius: 10px;
+    border: none;
     width: 100%;
     height: 30px;
+    margin: 0;
 }
 #noticias {
     width: 70%;
@@ -45,6 +52,7 @@ div {
     width: 13%;
     left: 86%;
     height: 100%;
+    margin-bottom: 60px;
 }
 #anuncioDer {
     position: absolute;
@@ -52,5 +60,30 @@ div {
     width: 13%;
     left: 1%;
     height: 100%;
-
+    margin-bottom: 60px;
+}
+.result{
+    position: absolute;        
+    z-index: 999;
+    top: 100%;
+    left: 0;
+}
+.search-box input[type="text"], .result{
+    width: 100%;
+    box-sizing: border-box;
+}
+/* Formatting result items */
+.result p{
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    cursor: pointer;
+    background-color: wheat;
+}
+.result p:hover{
+    background: rgb(247, 205, 127);
+}
+.result {
+    border: none;
 }
