@@ -27,7 +27,7 @@ if(isset($_REQUEST["term"])){
             if(mysqli_num_rows($result) > 0){
                 // Fetch result rows as an associative array
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>". $row["titulo"] . "</p>";
+                     echo '<a href=index.php?cmd=mostrar_cancion&cancion_id='.$row['id_cancion'].'><p>'.$row['titulo'].'</p></a>'; // cmd=mostrar_cancion&id_cancion = . $row['id_cancion'] .
                 }
             } else{
                 echo "<p>No se han encontrado canciones</p>";

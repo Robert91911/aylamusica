@@ -15,7 +15,7 @@ function show_banner() {
     ';
 }
 
-function show_content() {
+function show_seccionCentral() {
     echo '
     <div id="seccionCentral">
         <div id="buscador" class="contenido">
