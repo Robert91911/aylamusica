@@ -1,5 +1,12 @@
 <?php
 
+function cargarWeb() {
+    show_header();
+    show_banner();
+    show_seccionCentral();
+    show_ads();
+}
+
 function show_banner() {
     echo '
     <div id="banner">
@@ -22,12 +29,24 @@ function show_seccionCentral() {
             <input type="text" autocomplete="off" placeholder="Busca una cancion..." id="inputBuscador" />
             <div class="result"></div>
         </div>
+    ';
+    if(!isset($_GET["cancion_id"])){
+        echo '
         <div id="noticias" class="contenido">
-            <div class="noticia">
-            <p>Noticia</p>
-            </div>
+        <div class="noticia">
+        <p>Nuevas canciones:</p>
+        </div>
 
         </div>
+        ';
+    }else {
+        echo '
+        <ul>
+        '.cargar_cancion().'
+        </ul>
+        ';
+    }
+    echo '
     </div>
     ';
 }

@@ -18,35 +18,48 @@ function connection() {
 	
 }
 
-function cargar_cancion($id_cancion) {
+function cargar_cancion() {
 	$mysqli = connection();
-	
-	if (mysqli_connect_errno()) {
-		printf("Falló la conexión: %s\n", mysqli_connect_error());
+
+	if (!$mysqli->set_charset("utf8")) {
+		printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
 		exit();
 	}
-	$consulta = "select * from cancion join parrafos on parrafos.id_cancion=1 and cancion.id_cancion = ?";
-	$sentencia = $mysqli->prepare($consulta);
-	$sentencia->bind_param("s", $val1);
-
-	$val1 = $id_cancion;
 
 	
-	
-	// Attempt to execute the prepared statement
-	if(mysqli_stmt_execute($stmt)){
-		$result = mysqli_stmt_get_result($stmt);
+
+		// Prepare a select statement
+		$sql = "select * from cancion join parrafos on parrafos.id_cancion= ? and cancion.id_cancion = ?";
 		
-		// Check number of rows in the result set
-		if(mysqli_num_rows($result) > 0){
-			//Llama a show_songs(), y le pasa todos los parametros para mostrar los parrafos
-			show_songs();
-		}
-	} else{
-		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-	}
+		if($stmt = mysqli_prepare($mysqli, $sql)){
+			// Bind variables to the prepared statement as parameters
+			mysqli_stmt_bind_param($stmt, "ss", $val1, $val2);
+			
+			// Set parameters
+			$val1 = $_GET["cancion_id"];
+			$val2 = $_GET["cancion_id"];
 
-	
+			// Attempt to execute the prepared statement
+			if(mysqli_stmt_execute($stmt)){
+				$result = mysqli_stmt_get_result($stmt);
+				
+				// Check number of rows in the result set
+				if(mysqli_num_rows($result) > 0){
+					// Fetch result rows as an associative array
+					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+						 echo '<li><a href=index.php?cmd=id_parrafo&parrafo_id='.$row['id_parrafo'].'><p>'.$row['contenido'].'</p></a></li>';
+					}
+				} else{
+					echo "<p>No hay parrafos en esta canción </p>";
+				}
+			} else{
+				echo "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
+			}
+		}
+		 
+		// Close statement
+		mysqli_stmt_close($stmt);
+
 }
 //Busqueda de una cancion en la base de datos
 function searchSong() {
