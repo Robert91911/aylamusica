@@ -49,19 +49,20 @@ function cargar_cancion() {
 					echo '
 					<div class="cancion">
 						
-						<ul>
+						<ol>
 					';
-					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+						$comentario = cargar_comentario($row['id_parrafo']);
 						echo '
 							<div class="parrafo">
 								<li><a href=index.php?cmd=id_parrafo&parrafo_id='.$row['id_parrafo'].'><p>'.$row['contenido'].'</p></a></li>
-								'.cargar_comentario($row['id_parrafo']).'
+								<li><p>'.$comentario.'</p></li>
 							</div>
 						';
 					}
 
 					echo '
-						</ul>
+						</ol>
 					</div>
 					';
 				} else{
@@ -84,9 +85,6 @@ function cargar_comentario($id_parrafo) {
 		printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
 		exit();
 	}
-
-	
-
 		// Prepare a select statement
 		$sql = "select comentarios.contenido from parrafos join comentarios on parrafos.id_parrafo = ? and comentarios.id_parrafo = ?;";
 		
@@ -109,23 +107,20 @@ function cargar_comentario($id_parrafo) {
 					<div class="cancion">
 						<ul>
 					';
-					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-						echo '
-							<div class="parrafo">
-								<li><p>'.$row['contenido'].'</p></li>
-							</div>
-						';
-					}
+					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
+						return $row['contenido'];
+						
+					}
 					echo '
 						</ul>
 					</div>
 					';
 				} else{
-					echo "<p>No hay comentarios en este parrafo</p>";
+					return "No hay comentarios en este parrafo";
 				}
 			} else{
-				echo "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
+				return "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
 			}
 		}
 		 

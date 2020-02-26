@@ -90,9 +90,8 @@ div {
     text-decoration: none;
     
 }
-.cancion ul {
+.cancion ol {
     padding-inline-start: 0;
-    width: 70%;
 }
 .cancion li{
     list-style: none;
@@ -108,4 +107,12 @@ div {
     height: auto;
     padding-bottom: 15px;
     margin: auto;
+}
+.parrafo {
+    display: flex;
+    flex-direction: row;
+}
+.parrafo li {
+    border: 1px blue solid;
+    width: 50%;
 }

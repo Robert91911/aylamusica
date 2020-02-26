@@ -42,7 +42,6 @@ function show_seccionCentral() {
         ';
     }else {
         cargar_cancion();
-        
     }
     echo '
     </div>
