@@ -44,23 +44,21 @@ div {
 }
 #noticias {
     width: 70%;
-    height: 100%;
 }
 #anuncioIzq {
-    position: absolute;
-    top: 60px;
     width: 13%;
     left: 86%;
-    height: 100%;
-    margin-bottom: 60px;
 }
 #anuncioDer {
-    position: absolute;
-    top: 60px;
     width: 13%;
     left: 1%;
     height: 100%;
+}
+#anuncioIzq, #anuncioDer {
+    position: fixed;
+    top: 60px;
     margin-bottom: 60px;
+    height: 90%
 }
 .result{
     position: absolute;        
@@ -86,4 +84,28 @@ div {
 }
 .result {
     border: none;
+}
+.cancion a {
+    color: black;
+    text-decoration: none;
+    
+}
+.cancion ul {
+    padding-inline-start: 0;
+    width: 70%;
+}
+.cancion li{
+    list-style: none;
+}
+.cancion {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    height: auto;
+}
+.parrafo {
+    width: auto;
+    height: auto;
+    padding-bottom: 15px;
+    margin: auto;
 }

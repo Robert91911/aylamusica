@@ -46,9 +46,24 @@ function cargar_cancion() {
 				// Check number of rows in the result set
 				if(mysqli_num_rows($result) > 0){
 					// Fetch result rows as an associative array
+					echo '
+					<div class="cancion">
+						
+						<ul>
+					';
 					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-						 echo '<li><a href=index.php?cmd=id_parrafo&parrafo_id='.$row['id_parrafo'].'><p>'.$row['contenido'].'</p></a></li>';
+						echo '
+							<div class="parrafo">
+								<li><a href=index.php?cmd=id_parrafo&parrafo_id='.$row['id_parrafo'].'><p>'.$row['contenido'].'</p></a></li>
+								'.cargar_comentario($row['id_parrafo']).'
+							</div>
+						';
 					}
+
+					echo '
+						</ul>
+					</div>
+					';
 				} else{
 					echo "<p>No hay parrafos en esta canción </p>";
 				}
@@ -60,6 +75,62 @@ function cargar_cancion() {
 		// Close statement
 		mysqli_stmt_close($stmt);
 
+}
+
+function cargar_comentario($id_parrafo) {
+	$mysqli = connection();
+
+	if (!$mysqli->set_charset("utf8")) {
+		printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
+		exit();
+	}
+
+	
+
+		// Prepare a select statement
+		$sql = "select comentarios.contenido from parrafos join comentarios on parrafos.id_parrafo = ? and comentarios.id_parrafo = ?;";
+		
+		if($stmt = mysqli_prepare($mysqli, $sql)){
+			// Bind variables to the prepared statement as parameters
+			mysqli_stmt_bind_param($stmt, "ss", $val1, $val2);
+			
+			// Set parameters
+			$val1 = $id_parrafo;
+			$val2 = $id_parrafo;
+
+			// Attempt to execute the prepared statement
+			if(mysqli_stmt_execute($stmt)){
+				$result = mysqli_stmt_get_result($stmt);
+				
+				// Check number of rows in the result set
+				if(mysqli_num_rows($result) > 0){
+					// Fetch result rows as an associative array
+					echo '
+					<div class="cancion">
+						<ul>
+					';
+					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+						echo '
+							<div class="parrafo">
+								<li><p>'.$row['contenido'].'</p></li>
+							</div>
+						';
+					}
+
+					echo '
+						</ul>
+					</div>
+					';
+				} else{
+					echo "<p>No hay comentarios en este parrafo</p>";
+				}
+			} else{
+				echo "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
+			}
+		}
+		 
+		// Close statement
+		mysqli_stmt_close($stmt);
 }
 //Busqueda de una cancion en la base de datos
 function searchSong() {

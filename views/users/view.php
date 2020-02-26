@@ -26,25 +26,23 @@ function show_seccionCentral() {
     echo '
     <div id="seccionCentral">
         <div id="buscador" class="contenido">
-            <input type="text" autocomplete="off" placeholder="Busca una cancion..." id="inputBuscador" />
-            <div class="result"></div>
+                <input type="text" autocomplete="off" placeholder="Busca una cancion..." id="inputBuscador" />
+            <div class="result">
+            
+            </div>
         </div>
     ';
     if(!isset($_GET["cancion_id"])){
         echo '
         <div id="noticias" class="contenido">
-        <div class="noticia">
-        <p>Nuevas canciones:</p>
-        </div>
-
+            <div class="noticia">
+                <p>Nuevas canciones:</p>
+            </div>
         </div>
         ';
     }else {
-        echo '
-        <ul>
-        '.cargar_cancion().'
-        </ul>
-        ';
+        cargar_cancion();
+        
     }
     echo '
     </div>
@@ -62,6 +60,13 @@ function show_ads() {
     </div>
     ';
 
+}
+
+function show_footer() {
+    echo '
+    </body>
+    ';
+    
 }
 
 //Mustra la cacioón una vez el usuario la haya encontrado en el buscador
