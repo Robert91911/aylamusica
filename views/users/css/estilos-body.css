@@ -1,10 +1,10 @@
 div {
     width: 100px;
     height: 100px;
-    border: 1px red solid;
+    /*border: 1px red solid;*/
 }
 #banner {
-    width: 70%;
+    width: 90%;
     margin: auto;
     margin-bottom: 10px;
 }
@@ -19,7 +19,7 @@ div {
 }
 #seccionCentral {
     top: 60px;
-    width: 70%;
+    width: 55%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -46,19 +46,27 @@ div {
     width: 70%;
 }
 #anuncioIzq {
-    width: 13%;
-    left: 86%;
+    width: 16%;
+    left: 83%;
+}
+#anuncioIzq img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
 #anuncioDer {
-    width: 13%;
+    width: 16%;
     left: 1%;
     height: 100%;
 }
+
 #anuncioIzq, #anuncioDer {
     position: fixed;
-    top: 60px;
+    top: 150px;
     margin-bottom: 60px;
-    height: 90%
+    height: 80%;
+    text-align: center;
 }
 .result{
     position: absolute;        
@@ -85,16 +93,17 @@ div {
 .result {
     border: none;
 }
-.cancion a {
+.parrafo a {
     color: black;
     text-decoration: none;
     
 }
-.cancion ol {
+.parrafo ol {
     padding-inline-start: 0;
 }
-.cancion li{
+.parrafo li{
     list-style: none;
+    background-color: rgb(241, 206, 159);
 }
 .cancion {
     margin: auto;
@@ -110,9 +119,17 @@ div {
 }
 .parrafo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 .parrafo li {
-    border: 1px blue solid;
-    width: 50%;
+    /*border: 1px blue solid;*/
+    width: 80%;
+}
+#etiqueta-comentario {
+    background-color: rgb(219, 228, 145);
+}
+.lista_buscador {
+    list-style: none;
 }

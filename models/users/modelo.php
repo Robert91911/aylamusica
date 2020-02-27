@@ -46,25 +46,7 @@ function cargar_cancion() {
 				// Check number of rows in the result set
 				if(mysqli_num_rows($result) > 0){
 					// Fetch result rows as an associative array
-					echo '
-					<div class="cancion">
-						
-						<ol>
-					';
-					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-						$comentario = cargar_comentario($row['id_parrafo']);
-						echo '
-							<div class="parrafo">
-								<li><a href=index.php?cmd=id_parrafo&parrafo_id='.$row['id_parrafo'].'><p>'.$row['contenido'].'</p></a></li>
-								<li><p>'.$comentario.'</p></li>
-							</div>
-						';
-					}
-
-					echo '
-						</ol>
-					</div>
-					';
+					return $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
 				} else{
 					echo "<p>No hay parrafos en esta canción </p>";
 				}
@@ -103,21 +85,9 @@ function cargar_comentario($id_parrafo) {
 				// Check number of rows in the result set
 				if(mysqli_num_rows($result) > 0){
 					// Fetch result rows as an associative array
-					echo '
-					<div class="cancion">
-						<ul>
-					';
-					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-
-						return $row['contenido'];
-						
-					}
-					echo '
-						</ul>
-					</div>
-					';
+					return $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
 				} else{
-					return "No hay comentarios en este parrafo";
+					//nada
 				}
 			} else{
 				return "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
