@@ -11,6 +11,9 @@ function show_content() {
 				case 'mostrar_cancion':
 					cargarWeb();
 					break;
+				case 'comentar':
+					cargarWebComentarios();
+					break;
 			}
 
 		}
@@ -25,6 +28,27 @@ function show_content() {
 				show_loging();
 			}
 		}
+		if (isset($_POST['enviar_comentario'])) {
+
+			show_msg("Comentario enviado");
+
+			cargarWeb();
+		}
+
+		if (isset($_POST['compartir'])) {
+			
+			cargarWebCompartir();
+
+		}
+
+		if (isset($_POST['enviar_imagen_cancion'])) {
+			
+			show_msg("Imagen enviada correctamente");
+
+			cargarWeb();
+			
+		}
+
 	}
 }
 

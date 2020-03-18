@@ -97,9 +97,43 @@ function cargar_comentario($id_parrafo) {
 		// Close statement
 		mysqli_stmt_close($stmt);
 }
-//Busqueda de una cancion en la base de datos
-function searchSong() {
 
+function cargarUnParrafo($id_parrafo) {
+	$mysqli = connection();
+
+	if (!$mysqli->set_charset("utf8")) {
+		printf("Error cargando el conjunto de caracteres utf8: %s\n", $mysqli->error);
+		exit();
+	}
+		// Prepare a select statement
+		$sql = "select * from parrafos where id_parrafo = ?;";
+		
+		if($stmt = mysqli_prepare($mysqli, $sql)){
+			// Bind variables to the prepared statement as parameters
+			mysqli_stmt_bind_param($stmt, "s", $val1);
+			
+			// Set parameters
+			$val1 = $id_parrafo;
+
+			// Attempt to execute the prepared statement
+			if(mysqli_stmt_execute($stmt)){
+				$result = mysqli_stmt_get_result($stmt);
+				
+				// Check number of rows in the result set
+				if(mysqli_num_rows($result) > 0){
+					// Fetch result rows as an associative array
+					$row = mysqli_fetch_row($result);
+					return $row[1];
+				} else{
+					//nada
+				}
+			} else{
+				return "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
+			}
+		}
+		 
+		// Close statement
+		mysqli_stmt_close($stmt);
 }
 
 //Insert de un coment en un parrafo seleccionado

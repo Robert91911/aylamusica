@@ -7,6 +7,61 @@ function cargarWeb() {
     show_ads();
 }
 
+function cargarWebComentarios() {
+    show_header();
+    show_banner();
+    show_seccionCentral();
+    insertarComentario();
+    show_ads();
+}
+
+function cargarWebCompartir() {
+    show_header();
+    show_banner();
+    show_seccionCentral();
+    show_compartir();
+    show_ads();
+}
+
+function show_compartir() {
+    echo '
+        <div id="nuevoComentario">
+            <ol>
+                <form action="index.php" method="post" role="form">  
+                    <li><h2>Compartir la canción</h2></li>
+                    <li><input type="text" id="correo_compartir" name="fname" placeholder="Introduce aquí tu correo electronico"></li>
+                    <li><h3>Vista previa:</h3></li>
+                    <li><button type="submit" name="enviar_imagen_cancion">Enviar</button></li>
+                    <li><img src="data/tmp/images-export/200219001.png" alt="Imagen de la canción generada" id="vista_export"></li>
+                    <li></li>
+                </form>
+            </ol>
+        </div>
+    ';
+}
+
+function insertarComentario() {
+    $parrafo = cargarUnParrafo($_GET['parrafo_id']);
+    echo '
+        <div id="nuevoComentario">
+            <ol>
+                <form action="index.php" method="post" role="form">  
+                    <li><h2>Añadir comentario</h2></li>
+                    <li><h3>Estas apunto de comentar el siguiente parrafo:</h3></li>
+                    <li>
+                    <div>
+                    '.$parrafo.'
+                    </div>
+                    </li>
+                    <li><textarea name="textoComentarioNuevo" rows="10" cols="80" placeholder="Introduce aquí tu comentario"></textarea></li>
+                    <li><button type="submit" name="enviar_comentario">Enviar</button></li>
+                    <li></li>
+                </form>
+            </ol>
+        </div>
+    ';
+}
+
 function show_banner() {
     echo '
     <div id="banner">
@@ -36,7 +91,7 @@ function show_seccionCentral() {
         echo '
         <div id="noticias" class="contenido">
             <div class="noticia">
-                <p>Nuevas canciones:</p>
+                <p></p>
             </div>
         </div>
         ';
@@ -46,7 +101,7 @@ function show_seccionCentral() {
             $comentario = cargar_comentario($parrafos["id_parrafo"]);
             echo '
                 <div class="parrafo">
-                <li class="parrafo-interior"><a href=index.php?cmd=id_parrafo&parrafo_id='.$parrafos['id_parrafo'].'><p>'.$parrafos['contenido'].'</p></a></li>
+                <li class="parrafo-interior"><a href=index.php?cmd=comentar&parrafo_id='.$parrafos['id_parrafo'].'><p>'.$parrafos['contenido'].'</p></a></li>
             ';
             if(is_array($comentario)) { //Para evitar un warning, cuando no hay comentarios
                 echo '
@@ -61,9 +116,18 @@ function show_seccionCentral() {
             } else {
                 echo '</div>';
             }
-            
-            
+              
         }
+
+        echo '
+        <div id="compartir">
+            <form action="index.php" method="post" role="form"> 
+                <button type="submit" name="compartir">Compartir canción</button>
+            </form>
+        </div>
+        ';
+
+
     }
     echo '
     </div>
@@ -109,5 +173,9 @@ function show_newSongs() {
 
 }
 
+function show_msg($msg)
+{
+	echo "<script type='text/javascript'>alert('".$msg."');</script>";
+}
 
 ?>

@@ -133,3 +133,19 @@ div {
 .lista_buscador {
     list-style: none;
 }
+
+#nuevoComentario {
+    position: absolute;
+    margin: auto;
+    width: 50%;
+    left: 30%;
+}
+
+#nuevoComentario ol {
+    list-style: none;
+}
+
+#nuevoComentario div {
+    width: 100%;
+    height: auto;
+}
