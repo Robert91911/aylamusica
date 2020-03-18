@@ -11,9 +11,9 @@ function show_header(){
 			<html>
 			<head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <link rel="stylesheet" type="text/css" href="views/users/css/estilos-body.css">
+            <link rel="stylesheet" type="text/css" href="view/css/estilos-body.css">
             <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-            <script src="views/users/js/busqueda.js"></script>
+            <script src="view/js/busqueda.js"></script>
 			</head>
 			<body>
     ';
