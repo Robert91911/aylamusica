@@ -1,12 +1,39 @@
 /*--------------------------------------------------------------------------*/
-/*Estilo para pruebas de colocación*/
+/*Estilo general de los botones e imputs*/
 /*--------------------------------------------------------------------------*/
-div {
-    border: 1px solid red;
+button, input[type=submit]  {
+    border: 1px solid rgb(65, 158, 235);
+    background-color: white;
 }
 
-/*Estilos del Login*/
+button:hover ,input[type=submit]:hover  {
+    border: 1px solid rgb(65, 158, 235);
+    background-color: rgb(84, 184, 179);
+}
+
+button, input[type=submit], button:hover ,input[type=submit]:hover  {
+    height: 40px;
+    vertical-align: middle;
+    text-align:center;
+    font-size: 15px;
+}
+
+input[type=text], input[type=password] {
+    border: 1px solid rgb(65, 158, 235);
+    background-color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+
+h1, h2, h3 {
+    text-align: center;
+}
+/*--------------------------------------------------------------------------*/
+/*Estilos del login*/
+/*--------------------------------------------------------------------------*/
 #login {
+    border: 1px solid rgb(65, 158, 235);
     width: 60%;
     height: 30%;
     margin: auto;
@@ -37,6 +64,7 @@ div {
 }
 
 #panel_administracion {
+    border: 1px solid rgb(65, 158, 235);
     width: 60%;
     height: 30%;
     margin: auto;
@@ -66,17 +94,24 @@ div {
 }
 
 #panel_administracion a {
-    border: 1px solid red;
+    border: 1px solid rgb(65, 158, 235);
     width: 45%;
     height: auto;
+    margin-bottom: 10px;
 }
+
+#panel_administracion a:hover {
+    background-color: rgba(0, 0, 0, 0.11);
+}
+
+#panel_administracion a:visited {
+    color: rgb(0, 0, 0);
+}
+
 
 /*--------------------------------------------------------------------------*/
 /*Estilo de los paneles individuales*/
 /*--------------------------------------------------------------------------*/
-.panel_administrado h2, .panel_administrado h3 {
-    text-align: center;
-}
 
 .panel_administrado {
     padding-bottom: 40px;
@@ -88,6 +123,10 @@ div {
 .panel_administrado * {
     margin: auto;
     margin-top: 40px;
+}
+
+#log-file {
+    border: 1px solid rgb(65, 158, 235);
 }
 
 #log-file p {

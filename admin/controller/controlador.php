@@ -60,7 +60,11 @@ function show_content() {
 		}
 
 		if(isset($_POST['subir'])){ //Guardar entrada
-			show_msg("Canción subida");
+			if(subirCancion()){
+				show_msg("Canción subida");
+			} else {
+				show_msg("Error al subir la canción");
+			}
 			show_panel_administracion();
 		}
 

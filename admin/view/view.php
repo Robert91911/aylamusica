@@ -166,9 +166,9 @@ function show_pass_acceso(){
         <h1>Restablecer contraseña</h1>
 
         <form action="index.php" method="post" role="form">
-            <input type="text" class="form-control" name="pass1" placeholder="Escribe tu contraseña antigua" />
-            <input type="text" class="form-control" name="pass2" placeholder="Escribe tu nueva contraseña" />
-            <input type="text" class="form-control" name="pass1" placeholder="Vuelve a escribir la contraseña" />
+            <input type="password" class="form-control" name="pass1" placeholder="Escribe tu contraseña antigua" />
+            <input type="password" class="form-control" name="pass2" placeholder="Escribe tu nueva contraseña" />
+            <input type="password" class="form-control" name="pass1" placeholder="Vuelve a escribir la contraseña" />
             <input type="submit" name="restablecer_pass" value="Restablecer contraseña" />
             <input type="submit" name="atras" value="Atrás" />        
         </form>
@@ -202,7 +202,7 @@ function show_login() {
     <div id="login">
     <form action="index.php" method="post" role="form">
         <h2>ENTRAR</h2>
-        <input id="numero" type="text" name="pass_user" placeholder="Contraseña" required="">
+        <input id="pass_user_login" type="password" name="pass_user" placeholder="Contraseña" required="">
        
         <button type="submit" name="login">Login</button>
 

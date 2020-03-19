@@ -1,22 +1,29 @@
+/*--------------------------------------------------------------------------*/
+/*Estilo de la parte de los usuarios*/
+/*--------------------------------------------------------------------------*/
 div {
     width: 100px;
     height: 100px;
     /*border: 1px red solid;*/
 }
+
 #banner {
     width: 90%;
     margin: auto;
     margin-bottom: 10px;
 }
+
 #idioma {
     position: relative;
     left: 90%;
     height: 50px;
 }
+
 #buscador {
     position: relative;
 
 }
+
 #seccionCentral {
     top: 60px;
     width: 55%;
@@ -24,17 +31,20 @@ div {
     margin-left: auto;
     margin-right: auto;
 }
+
 .contenido {
     margin: auto;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 10px;
 }
+
 #buscador {
     width: 50%;
     height: 30px;
     background-color: rgb(218, 218, 218);
 }
+
 #inputBuscador {
     background-color: rgb(218, 218, 218);
     border: none;
@@ -42,6 +52,7 @@ div {
     height: 30px;
     margin: 0;
 }
+
 #noticias {
     width: 70%;
 }
@@ -49,12 +60,14 @@ div {
     width: 16%;
     left: 83%;
 }
+
 #anuncioIzq img {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
 }
+
 #anuncioDer {
     width: 16%;
     left: 1%;
@@ -63,23 +76,32 @@ div {
 
 #anuncioIzq, #anuncioDer {
     position: fixed;
-    top: 150px;
+    top: 30px;
     margin-bottom: 60px;
     height: 80%;
     text-align: center;
 }
+
 .result{
     position: absolute;        
     z-index: 999;
     top: 100%;
     left: 0;
 }
+
 .search-box input[type="text"], .result{
     width: 100%;
     box-sizing: border-box;
 }
-/* Formatting result items */
-.result p{
+
+.parrafo-interior:hover {
+    background-color: rgb(247, 205, 127);
+}
+
+/*--------------------------------------------------------------------------*/
+/*Estilo del buscador*/
+/*--------------------------------------------------------------------------*/
+.result p {
     margin: 0;
     padding: 7px 10px;
     border: 1px solid #CCCCCC;
@@ -87,49 +109,77 @@ div {
     cursor: pointer;
     background-color: wheat;
 }
-.result p:hover{
+
+.result p:hover {
     background: rgb(247, 205, 127);
 }
+
 .result {
     border: none;
 }
+
 .parrafo a {
     color: black;
     text-decoration: none;
     
 }
+
 .parrafo ol {
     padding-inline-start: 0;
 }
-.parrafo li{
-    list-style: none;
+
+.parrafo {
     background-color: rgb(241, 206, 159);
 }
+
+.parrafo li{
+    list-style: none;
+}
+
 .cancion {
     margin: auto;
     width: 100%;
     text-align: center;
     height: auto;
 }
+
 .parrafo {
     width: auto;
     height: auto;
     padding-bottom: 15px;
     margin: auto;
 }
+
 .parrafo {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
+
+.result li a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.result li a {
+    color: black;
+    text-decoration: none;
+}
+
 .parrafo li {
     /*border: 1px blue solid;*/
     width: 80%;
 }
+
 #etiqueta-comentario {
     background-color: rgb(219, 228, 145);
 }
+
+.comentario-interior { 
+    background-color: rgb(211, 224, 113);
+}
+
 .lista_buscador {
     list-style: none;
 }
@@ -148,4 +198,10 @@ div {
 #nuevoComentario div {
     width: 100%;
     height: auto;
+}
+
+#compartir-cancion {
+    position: fixed;
+    right: 25%;
+    bottom: 10px;
 }

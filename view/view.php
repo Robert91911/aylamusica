@@ -32,7 +32,7 @@ function show_compartir() {
                     <li><input type="text" id="correo_compartir" name="fname" placeholder="Introduce aquí tu correo electronico"></li>
                     <li><h3>Vista previa:</h3></li>
                     <li><button type="submit" name="enviar_imagen_cancion">Enviar</button></li>
-                    <li><img src="data/tmp/images-export/200219001.png" alt="Imagen de la canción generada" id="vista_export"></li>
+                    <li><img src="data/tmp/images-export/2002190011.png" alt="Imagen de la canción generada" id="vista_export"></li>
                     <li></li>
                 </form>
             </ol>
@@ -68,8 +68,8 @@ function show_banner() {
         <div id="idioma">
             <form>
                 <select onChange="location=this.options[this.selectedIndex].value;">
-                    <option value="#">Español</option>
-                    <option value="#">English</option>
+                    <option value=#>Español</option>
+                    <option value=#>English</option>
                 </select>
             </form>
         </div>
@@ -83,25 +83,37 @@ function show_seccionCentral() {
         <div id="buscador" class="contenido">
                 <input type="text" autocomplete="off" placeholder="Busca una cancion..." id="inputBuscador" />
             <div class="result">
-            
+                
             </div>
         </div>
     ';
     if(!isset($_GET["cancion_id"])){
-        echo '
-        <div id="noticias" class="contenido">
-            <div class="noticia">
-                <p></p>
+        if(!isset($_GET['parrafo_id'])) {
+            echo '
+            <div id="noticias" class="contenido">
+                <div class="parrafo">
+                    <h2>Como usar la aplicacion:</h2>
+                        <h3>Busqueda de canciones:</h3>
+                            <p>Primero pincha en el buscador</p>
+                            <p>Luego escribe la cancion que deseas encontrar: Prueba introduciendo una "T" o una M</p>
+                            <p>Despues cuando la cancion que buscas coincide con el título y los artistas: pincha sobre ella</p>
+                        <h3>Comentar un parrafo</h3>
+                            <p>Para comentar un parrafo lo unico que debes hacer es pnchar sobre él. (una vez hayas buscado la canción)</p>
+                            <p>Te llevará a una página que te muestra el parrafo y una caja donde dejar tu comentario</p>
+                        <h3>Compartir una canción</h3>
+                            <p>Para compartir una cancion lo unico que hay que hacer darle al botón compartir.</p>
+                </div>
             </div>
-        </div>
-        ';
+            ';
+        }
+       
     }else {
         $cancion = cargar_cancion();
         foreach ($cancion as $parrafos) {
             $comentario = cargar_comentario($parrafos["id_parrafo"]);
             echo '
                 <div class="parrafo">
-                <li class="parrafo-interior"><a href=index.php?cmd=comentar&parrafo_id='.$parrafos['id_parrafo'].'><p>'.$parrafos['contenido'].'</p></a></li>
+                <a class="parrafo-interior" href=index.php?cmd=comentar&parrafo_id='.$parrafos['id_parrafo'].'><p>'.$parrafos['contenido'].'</p></a>
             ';
             if(is_array($comentario)) { //Para evitar un warning, cuando no hay comentarios
                 echo '
@@ -120,8 +132,8 @@ function show_seccionCentral() {
         }
 
         echo '
-        <div id="compartir">
-            <form action="index.php" method="post" role="form"> 
+        <div id="compartir-cancion">
+            <form action="index.php?cmd=cancion_id_compartir='.$_GET["cancion_id"].'" method="post" role="form"> 
                 <button type="submit" name="compartir">Compartir canción</button>
             </form>
         </div>
@@ -137,20 +149,12 @@ function show_seccionCentral() {
 function show_ads() {
     echo '
     <div class="anuncio" id="anuncioDer">
-        <h1> Croquetas de la abuela</h1>
-
-        <p>Pruebe las nuevas croquetas de la abuela paka, en nuestro establecimiento</p>
-        <img src="data/ads/005-crockLaPaka.jpg" alt="Anuncio de unas suculentas croquetas">
-        <p>Ubicación: Calle de la Rosa Roja Nº8</p>
-        <p>Para más imformacicón visite nuestra pagina web</p>
+        <img src="data/ads/006-mc.png" alt="Anuncio de unas suculentas croquetas">
+        
     </div>
 
     <div class="anuncio" id="anuncioIzq">
-        <h1> Croquetas de la abuela</h1>
-
-        <p>Pruebe las nuevas croquetas de la abuela paka, en nuestro establecimiento</p>
-        <img src="data/ads/005-crockLaPaka.jpg" alt="Anuncio de unas suculentas croquetas">
-        <p>Ubicación: Calle de la Rosa Roja Nº8</p>
+        <img src="data/ads/007-mc.png" alt="Anuncio de unas suculentas croquetas">
     </div>
     ';
 

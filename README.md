@@ -19,6 +19,13 @@ Para usar la aplicacion conectese en el navegador a http://localhost/aylamusica
 
 Para entrar a la parte de administración de la aplicacion entre: http://localhost/aylamusica/admin
 
+## Funciones Programadas
+
+Las funciones que están programadas son las siguientes:
+- Buscar una canción
+- Listar las canciones
+- Ver fichero LOG
+
 
 ## License
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html)
