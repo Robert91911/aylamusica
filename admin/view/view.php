@@ -1,8 +1,11 @@
 <?php
 
 function show_panel_administracion() {
+    $titulo = "Panel del admistrador";
+    show_header($titulo);
+    
     echo '
-    <div>
+    <div id="panel_administracion">
         <h1>Administración</h1>
         <div>
         <ol>
@@ -45,12 +48,24 @@ function show_panel_administracion() {
 }
 
 function show_subir_cancion(){
+    $titulo = "Subir una canción";
+    show_header($titulo);
+    
     echo '
-        <div>
+        <div class="panel_administrado">
             <h2>Importar / Exportar una canción</h2>
             <form action="index.php" method="post" role="form">
                 <h3>Importar</h3>
-                <input type="file" id="subir_cancion" name="subida">
+                <input type="text" name="titulo_cancion_subir" placeholder="Introduce el titulo de la canción ">
+                <input type="text" name="artistas_cancion_subir" placeholder="Introduce los artistas: (separados por comas) ">
+                <p>Imagen de la canción</p>
+                <input type="file" name="imagen_cancion_subir" placeholder="Introduce la imágen de la canción ">
+                <input type="text" name="parrafo_cancion_subir_0" placeholder="Parrafo:">
+                <input type="text" name="parrafo_cancion_subir_1" placeholder="Parrafo:">
+                <input type="text" name="parrafo_cancion_subir_2" placeholder="Parrafo:">
+                <input type="text" name="parrafo_cancion_subir_3" placeholder="Parrafo:">
+                <input type="text" name="parrafo_cancion_subir_4" placeholder="Parrafo:">
+                <input type="button" name="mas_parrafos" value="+" />
                 <input type="submit" name="subir" value="Subir" />
                 <input type="submit" name="atras" value="Atrás" />
             </form>
@@ -60,10 +75,29 @@ function show_subir_cancion(){
 
 
 function show_ver_log(){
+    $titulo = "Ver log";
+    show_header($titulo);
+
     echo '
-        <div>
+        <div class="panel_administrado">
             <form action="index.php" method="post" role="form">
                 <h2>Log de la aplicación</h2>
+                <div id="log-file">
+    ';
+
+    $fp = fopen("../logs/lattest.log", "r");
+    $lineaNum = 0;
+    while (!feof($fp)){
+        $lineaNum++;
+        $linea = fgets($fp);
+        echo '
+            <p>Fila: '.$lineaNum.' LOG:  '.$linea.'</p>
+        ';
+    }
+    fclose($fp);
+
+    echo '
+                </div>
                 <input type="submit" name="atras" value="Atrás" />
             </form>
         </div>
@@ -71,8 +105,11 @@ function show_ver_log(){
 }
 
 function show_exportar_importar(){
+    $titulo = "Importar o Exportar";
+    show_header($titulo);
+    
     echo '
-        <div>
+        <div class="panel_administrado">
             <h2>Importar / Exportar una canción</h2>
             <form action="index.php" method="post" role="form">
                 <h3>Importar</h3>
@@ -89,8 +126,11 @@ function show_exportar_importar(){
 }
 
 function show_admin_anuncios(){
+    $titulo = "Configuracion de anuncios";
+    show_header($titulo);
+    
     echo '
-    <div>
+    <div class="panel_administrado">
         <h2>Administrar anuncios</h2>
         <form action="index.php" method="post" role="form">
             <input type="submit" name="guardar_anuncios" value="Guardar anuncios" />
@@ -101,8 +141,11 @@ function show_admin_anuncios(){
 }
 
 function show_correo_patrocinadores(){
+    $titulo = "Correo masivo";
+    show_header($titulo);
+    
     echo '
-    <div>
+    <div class="panel_administrado">
         <h2>Mandar un correo a los patrocinadores</h2>
         <form action="index.php" method="post" role="form">
             <input type="text" name="asunto" placeholder="Introduce el asunto: ">
@@ -115,8 +158,11 @@ function show_correo_patrocinadores(){
 }
 
 function show_pass_acceso(){
+    $titulo = "Cambiar contraseña";
+    show_header($titulo);
+    
     echo'
-        <div class="nuevaEntrada">
+        <div class="panel_administrado">
         <h1>Restablecer contraseña</h1>
 
         <form action="index.php" method="post" role="form">
@@ -131,8 +177,11 @@ function show_pass_acceso(){
 }
 
 function show_diccionario_insultos(){
+    $titulo = "Administrar insultos";
+    show_header($titulo);
+    
     echo'
-    <div class="nuevaEntrada">
+    <div class="panel_administrado">
     <h1>Restablecer contraseña</h1>
 
     <form action="index.php" method="post" role="form">
@@ -146,18 +195,19 @@ function show_diccionario_insultos(){
 
 
 function show_login() {
+    $titulo = "Login - Aylamusica";
+    show_header($titulo);
+
     echo '
-    <section id="slider">
+    <div id="login">
     <form action="index.php" method="post" role="form">
         <h2>ENTRAR</h2>
-        <input id="numero" type="text" name="username_user" placeholder="Usuario" required=""><br><br>
-        <input id="numero" type="text" name="pass_user" placeholder="Contraseña" required=""><br><br>
+        <input id="numero" type="text" name="pass_user" placeholder="Contraseña" required="">
        
-        <button type="submit" name="login">Login</button><br><br>
-        <input type="submit" name="atras" value="Atrás" />
+        <button type="submit" name="login">Login</button>
 
         <a href="#"><p>¿Olvidaste tu contraseña?</p></a>
-    </section>';
+    </div>';
 }
 
 /*

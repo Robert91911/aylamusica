@@ -29,6 +29,10 @@ function addInsult(){
 
 }
 
+function leerFicheroLog() {
+    
+}
+
 //Recibe la nueva y la antigua contraseña
 function changePass(){
     checkAdminPass(); //Le paso la contraseña antigua para que la compruebe. Si es la misma inserto

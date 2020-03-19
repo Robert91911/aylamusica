@@ -1,0 +1,115 @@
+/*--------------------------------------------------------------------------*/
+/*Estilo para pruebas de colocación*/
+/*--------------------------------------------------------------------------*/
+div {
+    border: 1px solid red;
+}
+
+/*Estilos del Login*/
+#login {
+    width: 60%;
+    height: 30%;
+    margin: auto;
+}
+
+#login * {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+#login input, #login button {
+    width: 40%;
+}
+
+#login input {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*--------------------------------------------------------------------------*/
+/*Estilos del panel de administracion*/
+/*--------------------------------------------------------------------------*/
+#panel_administracion h1 {
+    text-align: center;
+}
+
+#panel_administracion {
+    width: 60%;
+    height: 30%;
+    margin: auto;
+}
+
+#panel_administracion div * {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
+}
+
+#panel_administracion li {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+/*Quitar estilos de la lista ordenada*/
+#panel_administracion ol {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    width: auto;
+}
+
+#panel_administracion a {
+    border: 1px solid red;
+    width: 45%;
+    height: auto;
+}
+
+/*--------------------------------------------------------------------------*/
+/*Estilo de los paneles individuales*/
+/*--------------------------------------------------------------------------*/
+.panel_administrado h2, .panel_administrado h3 {
+    text-align: center;
+}
+
+.panel_administrado {
+    padding-bottom: 40px;
+    width: 60%;
+    height: 30%;
+    margin: auto;
+}
+
+.panel_administrado * {
+    margin: auto;
+    margin-top: 40px;
+}
+
+#log-file p {
+    align-items: flex-start;
+    text-align: left;
+    margin: 5px 10px 5px 10px;
+}
+
+
+.panel_administrado * {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
+}
+.panel_administrado input, .panel_administrado button {
+    width: 30%;
+}
+
+.panel_administrado input {
+    margin-left: auto;
+    margin-right: auto;
+}
