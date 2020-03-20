@@ -23,7 +23,7 @@ Para entrar a la parte de administración de la aplicacion entre: http://localho
 
 Las funciones que están programadas son las siguientes:
 - Buscar una canción
-- Listar las canciones
+- Listar las canciones (con comentarios en cada parrafo)
 - Ver fichero LOG
 
 

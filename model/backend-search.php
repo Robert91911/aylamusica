@@ -1,32 +1,40 @@
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "robert", "Clave_00", "aylamusica");
- 
+
+/*
+* Cada vez que se escribe un caracter en el buscador hace una consulta a la base de datos y actualiza los resultados
+* E: String term
+* S: String
+* SQL: "SELECT * FROM cancion WHERE titulo LIKE ?";
+*/
+
+include_once(__DIR__.'/../config.php');
+
+$link = mysqli_connect($BD_DIRECCION, $BD_USUARIO, $BD_PASS, $BD_NOMBRE);
+
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
  
-if(isset($_REQUEST["term"])){
-    // Prepare a select statement
+if(isset($_REQUEST["term"])) {
+    // Pareparar el statement
     $sql = "SELECT * FROM cancion WHERE titulo LIKE ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
+        // Enlazar las variables con el statement
         mysqli_stmt_bind_param($stmt, "s", $param_term);
         
-        // Set parameters
+        // Establecer los parametros
         $param_term = $_REQUEST["term"] . '%';
         
-        // Attempt to execute the prepared statement
+        // Ejecuta el statement
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
             
-            // Check number of rows in the result set
+            // Comprueba el numero de filas
             if(mysqli_num_rows($result) > 0){
-                // Fetch result rows as an associative array
-                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                // Mete los resultados en un array asociatvo
+                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { 
                      echo '<li class="lista_buscador"><a href=index.php?cmd=mostrar_cancion&cancion_id='.$row['id_cancion'].'><p>'.$row['titulo'], " ● " , $row['artista'].'</p></a></li>'; // cmd=mostrar_cancion&id_cancion = . $row['id_cancion'] .
                 }
             } else{
@@ -37,10 +45,10 @@ if(isset($_REQUEST["term"])){
         }
     }
      
-    // Close statement
+    
     mysqli_stmt_close($stmt);
 }
  
-// close connection
+// Cierra la conexion
 mysqli_close($link);
 ?>

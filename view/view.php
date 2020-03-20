@@ -5,6 +5,7 @@ function cargarWeb() {
     show_banner();
     show_seccionCentral();
     show_ads();
+    show_footer();
 }
 
 function cargarWebComentarios() {
@@ -13,6 +14,7 @@ function cargarWebComentarios() {
     show_seccionCentral();
     insertarComentario();
     show_ads();
+    show_footer();
 }
 
 function cargarWebCompartir() {
@@ -21,6 +23,7 @@ function cargarWebCompartir() {
     show_seccionCentral();
     show_compartir();
     show_ads();
+    show_footer();
 }
 
 function show_compartir() {

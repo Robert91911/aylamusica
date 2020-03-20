@@ -9,9 +9,12 @@ include_once 'controller/controlador.php';
 
 include_once 'model/modelo.php';
 
+include_once 'model/backend-search.php';
+
 include_once 'view/header.php';
 
 include_once 'view/view.php';
+
 
 show_content();
 
